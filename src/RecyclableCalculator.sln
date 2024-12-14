@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DF101905
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecyclableCalculator.Core", "RecyclableCalculator.Core\RecyclableCalculator.Core.csproj", "{A4C25662-F8CC-4C98-AC96-5B95C7A4E823}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecyclableCalculator.Infrastructure", "RecyclableCalculator.Infrastructure\RecyclableCalculator.Infrastructure.csproj", "{65DFA14C-0503-43A3-B6A4-41C2885EF7BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{A4C25662-F8CC-4C98-AC96-5B95C7A4E823}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4C25662-F8CC-4C98-AC96-5B95C7A4E823}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4C25662-F8CC-4C98-AC96-5B95C7A4E823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DFA14C-0503-43A3-B6A4-41C2885EF7BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DFA14C-0503-43A3-B6A4-41C2885EF7BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DFA14C-0503-43A3-B6A4-41C2885EF7BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DFA14C-0503-43A3-B6A4-41C2885EF7BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CF84C192-1572-4897-AC2D-B9B034A93857} = {B29075A4-5D57-45F3-B7B8-C889D4DB0C8C}
 		{A4C25662-F8CC-4C98-AC96-5B95C7A4E823} = {B29075A4-5D57-45F3-B7B8-C889D4DB0C8C}
+		{65DFA14C-0503-43A3-B6A4-41C2885EF7BF} = {B29075A4-5D57-45F3-B7B8-C889D4DB0C8C}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b38c72fb1094480ac5039904b2cf4bd" Name="Diagram1" >
+        <EntityTypeShape EntityType="ApplicationDbContextModel.RecyclableType" Width="1.5" PointX="6.75" PointY="2.5" />
+        <EntityTypeShape EntityType="ApplicationDbContextModel.RecyclableItem" Width="1.5" PointX="8.875" PointY="2.5" />
+        <AssociationConnector Association="ApplicationDbContextModel.RecyclableItemRecyclableType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

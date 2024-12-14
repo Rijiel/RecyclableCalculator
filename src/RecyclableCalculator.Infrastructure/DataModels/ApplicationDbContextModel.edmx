@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ApplicationDbContextModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ApplicationDbContextModelStoreContainer">
+    <EntitySet Name="RecyclableTypes" EntityType="ApplicationDbContextModel.Store.RecyclableTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecyclableItems" EntityType="ApplicationDbContextModel.Store.RecyclableItems" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RecyclableItemRecyclableType" Association="ApplicationDbContextModel.Store.RecyclableItemRecyclableType">
+      <End Role="RecyclableItem" EntitySet="RecyclableItems" />
+      <End Role="RecyclableType" EntitySet="RecyclableTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RecyclableTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Rate" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="MinKg" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="MaxKg" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="RecyclableItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemDescription" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="RecyclableTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RecyclableItemRecyclableType">
+    <End Role="RecyclableItem" Type="ApplicationDbContextModel.Store.RecyclableItems" Multiplicity="*" />
+    <End Role="RecyclableType" Type="ApplicationDbContextModel.Store.RecyclableTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="RecyclableType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecyclableItem">
+        <PropertyRef Name="RecyclableTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDbContextModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ApplicationDbContextModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RecyclableTypes" EntityType="ApplicationDbContextModel.RecyclableType" />
+          <EntitySet Name="RecyclableItems" EntityType="ApplicationDbContextModel.RecyclableItem" />
+          <AssociationSet Name="RecyclableItemRecyclableType" Association="ApplicationDbContextModel.RecyclableItemRecyclableType">
+            <End Role="RecyclableItem" EntitySet="RecyclableItems" />
+            <End Role="RecyclableType" EntitySet="RecyclableTypes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RecyclableType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="true" MaxLength="100" Unicode="false" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Scale="2" />
+          <Property Name="MinKg" Type="Decimal" Nullable="false" Scale="2" />
+          <Property Name="MaxKg" Type="Decimal" Nullable="false" Scale="2" />
+          <NavigationProperty Name="RecyclableItem" Relationship="ApplicationDbContextModel.RecyclableItemRecyclableType" FromRole="RecyclableType" ToRole="RecyclableItem" />
+        </EntityType>
+        <EntityType Name="RecyclableItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="100" Unicode="false" />
+          <NavigationProperty Name="RecyclableType" Relationship="ApplicationDbContextModel.RecyclableItemRecyclableType" FromRole="RecyclableItem" ToRole="RecyclableType" />
+          <Property Name="RecyclableTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RecyclableItemRecyclableType">
+          <End Type="ApplicationDbContextModel.RecyclableItem" Role="RecyclableItem" Multiplicity="*" />
+          <End Type="ApplicationDbContextModel.RecyclableType" Role="RecyclableType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="RecyclableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecyclableItem">
+              <PropertyRef Name="RecyclableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ApplicationDbContextModelStoreContainer" CdmEntityContainer="ApplicationDbContextModelContainer">
+    <EntitySetMapping Name="RecyclableTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ApplicationDbContextModel.RecyclableType)">
+        <MappingFragment StoreEntitySet="RecyclableTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="MinKg" ColumnName="MinKg" />
+          <ScalarProperty Name="MaxKg" ColumnName="MaxKg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecyclableItems">
+      <EntityTypeMapping TypeName="IsTypeOf(ApplicationDbContextModel.RecyclableItem)">
+        <MappingFragment StoreEntitySet="RecyclableItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="RecyclableTypeId" ColumnName="RecyclableTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
