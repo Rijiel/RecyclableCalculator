@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using RecyclableCalculator.Core.AutoMapperProfiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,9 @@ namespace RecyclableCalculator.Web
 	{
 		protected void Application_Start()
 		{
+			var config = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>());
+			var mapper = config.CreateMapper();
+
 			AreaRegistration.RegisterAllAreas();
 			UnityConfig.RegisterComponents();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

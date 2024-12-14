@@ -8,12 +8,23 @@ using System.Threading.Tasks;
 
 namespace RecyclableCalculator.Core.Dto.RecyclableTypeDtos
 {
-	public class RyclableTypeResponse
+	public class RecyclableTypeAddRequest
 	{
-		public int Id { get; set; }
+		[Required]
+		[StringLength(100)]
+		[UniqueType]
 		public string Type { get; set; }
+
+		[Required]
+		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		public double Rate { get; set; }
+
+		[Required]
+		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		public double MinKg { get; set; }
+
+		[Required]
+		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		public double MaxKg { get; set; }
 	}
 }

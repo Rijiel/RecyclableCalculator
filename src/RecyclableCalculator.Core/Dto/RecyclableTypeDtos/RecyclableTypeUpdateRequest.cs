@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace RecyclableCalculator.Core.Dto.RecyclableTypeDtos
 {
-	public class RyclableTypeAddRequest
+	public class RecyclableTypeUpdateRequest
 	{
+		[Required]
+		public int Id { get; set; }
+
 		[Required]
 		[StringLength(100)]
 		[UniqueType]
