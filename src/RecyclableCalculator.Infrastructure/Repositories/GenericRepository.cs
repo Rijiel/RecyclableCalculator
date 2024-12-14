@@ -24,13 +24,17 @@ namespace RecyclableCalculator.Infrastructure.Repositories
 		public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null, params string[] includes)
 		{
 			IQueryable<TEntity> query = _dbSet;
+
+			// Disable tracking by default to prevent unnecessary updates and errors
 			query = query.AsNoTracking();
 
+			// Apply filter
 			if (filter != null)
 			{
 				query = query.Where(filter);
 			}
 
+			// Apply each include
 			if (includes.Length > 0)
 			{
 				foreach (var include in includes)
@@ -45,13 +49,17 @@ namespace RecyclableCalculator.Infrastructure.Repositories
 		public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter, bool asNoTracking = true, params string[] includes)
 		{
 			IQueryable<TEntity> query = _dbSet;
+
+			// Disable tracking by default to prevent unnecessary updates and errors
 			query = asNoTracking ? query.AsNoTracking() : query;
 
+			// Apply filter
 			if (filter != null)
 			{
 				query = query.Where(filter);
 			}
 
+			// Apply each include
 			if (includes.Length > 0)
 			{
 				foreach (var include in includes)
@@ -66,8 +74,11 @@ namespace RecyclableCalculator.Infrastructure.Repositories
 		public async Task<TEntity> GetByIdAsync(int id, bool asNoTracking = true, params string[] includes)
 		{
 			IQueryable<TEntity> query = _dbSet;
+
+			// Disable tracking by default to prevent unnecessary updates and errors
 			query = asNoTracking ? query.AsNoTracking() : query;
 
+			// Apply each include
 			if (includes.Length > 0)
 			{
 				foreach (var include in includes)
@@ -76,6 +87,7 @@ namespace RecyclableCalculator.Infrastructure.Repositories
 				}
 			}
 
+			// Use reflection to get the Id property of the generic model
 			var key = typeof(TEntity).GetProperty("Id");
 
 			return await query.FirstOrDefaultAsync(x => key.GetValue(x).Equals(id));

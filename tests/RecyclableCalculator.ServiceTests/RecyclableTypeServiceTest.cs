@@ -1,4 +1,3 @@
-
 using AutoMapper;
 using FluentAssertions;
 using Moq;

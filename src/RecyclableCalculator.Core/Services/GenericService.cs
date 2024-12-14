@@ -89,11 +89,8 @@ namespace RecyclableCalculator.Core.Services
 
 		public async Task RemoveAsync(int id)
 		{
-			TModel model = await _repository.GetByIdAsync(id);
-			if (model == null)
-			{
-				throw new KeyNotFoundException($"{nameof(TModel)} with {nameof(id)} {id} not found");
-			}
+			TModel model = await _repository.GetByIdAsync(id) 
+				?? throw new KeyNotFoundException($"{nameof(TModel)} with {nameof(id)} {id} not found");
 
 			_repository.Remove(model);
 			await _repository.SaveChangesAsync();
