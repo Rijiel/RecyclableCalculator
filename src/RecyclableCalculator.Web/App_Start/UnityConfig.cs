@@ -1,4 +1,6 @@
 using RecyclableCalculator.Core.Domain.RepositoryContracts;
+using RecyclableCalculator.Core.ServiceContracts;
+using RecyclableCalculator.Core.Services;
 using RecyclableCalculator.Infrastructure.Repositories;
 using System.Web.Mvc;
 using Unity;
@@ -20,6 +22,8 @@ namespace RecyclableCalculator.Web
            // container.RegisterType<IRecyclableItemRepository, RecyclableItemRepository>();
             container.RegisterType<IRecyclableTypeRepository, RecyclableTypeRepository>();
             container.RegisterType<IRecyclableItemRepository, RecyclableItemRepository>();
+            container.RegisterType<IRecyclableTypeService, RecyclableTypeService>();
+			container.RegisterType<IRecyclableItemService, RecyclableItemService>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

@@ -17,7 +17,7 @@ namespace RecyclableCalculator.Core.Services
 		private readonly IRecyclableTypeRepository _recyclableTypeRepository;
 
 		public RecyclableItemService(IRecyclableItemRepository repository, 
-			IRecyclableTypeRepository recyclableTypeRepository, IMapper mapper) : base(repository, mapper)
+			IRecyclableTypeRepository recyclableTypeRepository) : base(repository)
 		{
 			_recyclableTypeRepository = recyclableTypeRepository;
 		}

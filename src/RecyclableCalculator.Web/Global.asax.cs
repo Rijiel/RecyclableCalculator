@@ -14,9 +14,6 @@ namespace RecyclableCalculator.Web
 	{
 		protected void Application_Start()
 		{
-			var config = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>());
-			var mapper = config.CreateMapper();
-
 			AreaRegistration.RegisterAllAreas();
 			UnityConfig.RegisterComponents();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

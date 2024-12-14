@@ -16,7 +16,6 @@ namespace RecyclableCalculator.ServiceTests;
 
 public class RecyclableItemServiceTest
 {
-	private readonly IMapper _mapper;
 	private readonly Mock<IRecyclableItemRepository> _recyclableItemRepositoryMock;
 	private readonly Mock<IRecyclableTypeRepository> _recyclableTypeRepositoryMock;
 
@@ -26,15 +25,13 @@ public class RecyclableItemServiceTest
 
 	public RecyclableItemServiceTest()
 	{
-		_mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>()).CreateMapper();
-
 		_recyclableItemRepositoryMock = new Mock<IRecyclableItemRepository>();
 		_recyclableItemRepository = _recyclableItemRepositoryMock.Object;
 
 		_recyclableTypeRepositoryMock = new Mock<IRecyclableTypeRepository>();
 		_recyclableTypeRepository = _recyclableTypeRepositoryMock.Object;
 
-		_recyclableItemService = new RecyclableItemService(_recyclableItemRepository, _recyclableTypeRepository, _mapper);
+		_recyclableItemService = new RecyclableItemService(_recyclableItemRepository, _recyclableTypeRepository);
 	}
 
 	[Fact]

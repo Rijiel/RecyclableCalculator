@@ -20,10 +20,12 @@ namespace RecyclableCalculator.Core.Dto.RecyclableItemDtos
 
 		[Required]
 		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+		[Range(0, int.MaxValue)]
 		public double Weight { get; set; }
 
 		[Required]
 		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+		[Range(0, int.MaxValue)]
 		public double ComputedRate { get; set; }
 	}
 }

@@ -50,7 +50,6 @@
     <Compile Include="AutoMapperProfiles\AutoMapperProfile.cs" />
     <Compile Include="Domain\Models\RecyclableItem.cs" />
     <Compile Include="Domain\Models\RecyclableType.cs" />
-    <Compile Include="Domain\Models\Validations\UniqueType.cs" />
     <Compile Include="Domain\RepositoryContracts\IGenericRepository.cs" />
     <Compile Include="Domain\RepositoryContracts\IRecyclableItemRepository.cs" />
     <Compile Include="Domain\RepositoryContracts\IRecyclableTypeRepository.cs" />

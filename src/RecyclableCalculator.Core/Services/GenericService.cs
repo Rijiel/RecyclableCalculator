@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RecyclableCalculator.Core.AutoMapperProfiles;
 using RecyclableCalculator.Core.Domain.RepositoryContracts;
 using RecyclableCalculator.Core.ServiceContracts;
 using System;
@@ -20,10 +21,10 @@ namespace RecyclableCalculator.Core.Services
 		private readonly IGenericRepository<TModel> _repository;
 		private readonly IMapper _mapper;
 
-		public GenericService(IGenericRepository<TModel> repository, IMapper mapper)
+		public GenericService(IGenericRepository<TModel> repository)
 		{
 			_repository = repository;
-			_mapper = mapper;
+			_mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>()).CreateMapper();
 		}
 
 		protected IMapper Mapper => _mapper;

@@ -25,7 +25,7 @@ namespace RecyclableCalculator.ServiceTests
 
 			_recyclableTypeRepositoryMock = new Mock<IRecyclableTypeRepository>();
 			_recyclableTypeRepository = _recyclableTypeRepositoryMock.Object;
-			_recyclableTypeService = new RecyclableTypeService(_recyclableTypeRepository, _mapper);
+			_recyclableTypeService = new RecyclableTypeService(_recyclableTypeRepository);
 		}
 
 		#region GetAllAsync

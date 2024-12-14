@@ -1,5 +1,4 @@
-﻿using RecyclableCalculator.Core.Domain.Models.Validations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

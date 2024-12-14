@@ -14,7 +14,7 @@ namespace RecyclableCalculator.Core.Services
 	public class RecyclableTypeService : GenericService<RecyclableType, RecyclableTypeAddRequest, 
 		RecyclableTypeUpdateRequest, RecyclableTypeResponse>, IRecyclableTypeService
 	{
-		public RecyclableTypeService(IRecyclableTypeRepository repository, IMapper mapper) : base(repository, mapper)
+		public RecyclableTypeService(IRecyclableTypeRepository repository) : base(repository)
 		{			
 		}
 	}
