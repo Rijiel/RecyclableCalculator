@@ -19,6 +19,7 @@ namespace RecyclableCalculator.Web
 
            // container.RegisterType<IRecyclableItemRepository, RecyclableItemRepository>();
             container.RegisterType<IRecyclableTypeRepository, RecyclableTypeRepository>();
+            container.RegisterType<IRecyclableItemRepository, RecyclableItemRepository>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
