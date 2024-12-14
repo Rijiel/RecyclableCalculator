@@ -46,9 +46,13 @@
   <ItemGroup>
     <Compile Include="Domain\Models\RecyclableItem.cs" />
     <Compile Include="Domain\Models\RecyclableType.cs" />
+    <Compile Include="Domain\RepositoryContracts\IGenericRepository.cs" />
+    <Compile Include="Domain\RepositoryContracts\IRecyclableItemRepository.cs" />
+    <Compile Include="Domain\RepositoryContracts\IRecyclableTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Dto\" />
     <Folder Include="ServiceContracts\" />
     <Folder Include="Services\" />
   </ItemGroup>

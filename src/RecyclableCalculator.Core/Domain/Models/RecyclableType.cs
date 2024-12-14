@@ -11,16 +11,16 @@ namespace RecyclableCalculator.Core.Domain.Models
 	{
 		public int Id { get; set; }
 
-		[Column(TypeName = "varchar(100)")]
+		//[Column(TypeName = "varchar(100)")]
 		public string Type { get; set; }
 
-		[Column(TypeName = "decimal(18,2)")]
+		//[Column(TypeName = "decimal(18,2)")]
 		public double Rate { get; set; }
 
-		[Column(TypeName = "decimal(18,2)")]
+		//[Column(TypeName = "decimal(18,2)")]
 		public double MinKg { get; set; }
 
-		[Column(TypeName = "decimal(18,2)")]
+		//[Column(TypeName = "decimal(18,2)")]
 		public double MaxKg { get; set; }
 	}
 }

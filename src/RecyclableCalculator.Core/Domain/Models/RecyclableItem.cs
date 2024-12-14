@@ -11,7 +11,7 @@ namespace RecyclableCalculator.Core.Domain.Models
 	{
 		public int Id { get; set; }
 
-		[Column(TypeName = "varchar(150)")]
+		//[Column(TypeName = "varchar(150)")]
 		public string ItemDescription { get; set; }
 
 		public int RecyclableTypeId { get; set; }
@@ -19,10 +19,10 @@ namespace RecyclableCalculator.Core.Domain.Models
 		[ForeignKey(nameof(RecyclableTypeId))]
 		public RecyclableType RecyclableType { get; set; }
 
-		[Column(TypeName = "decimal(18,2)")]
+		//[Column(TypeName = "decimal(18,2)")]
 		public double Weight { get; set; }
 
-		[Column(TypeName = "decimal(18,2)")]
+		//[Column(TypeName = "decimal(18,2)")]
 		public double ComputedRate { get; set; }
 	}
 }

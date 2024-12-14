@@ -140,6 +140,9 @@
       <DependentUpon>ApplicationDbContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\RecyclableItemRepository.cs" />
+    <Compile Include="Repositories\RecyclableTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
