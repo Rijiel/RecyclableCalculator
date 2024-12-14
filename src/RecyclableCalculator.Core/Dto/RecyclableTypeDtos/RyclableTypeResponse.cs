@@ -1,22 +1,19 @@
-﻿using System;
+﻿using RecyclableCalculator.Core.Domain.Models.Validations;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecyclableCalculator.Core.Domain.Models
+namespace RecyclableCalculator.Core.Dto.RecyclableTypeDtos
 {
-	public class RecyclableType
+	public class RyclableTypeResponse
 	{
 		public int Id { get; set; }
-
 		public string Type { get; set; }
-
 		public double Rate { get; set; }
-
 		public double MinKg { get; set; }
-
 		public double MaxKg { get; set; }
 	}
 }
