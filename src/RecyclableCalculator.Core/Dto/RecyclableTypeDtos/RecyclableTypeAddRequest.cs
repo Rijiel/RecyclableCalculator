@@ -16,16 +16,16 @@ namespace RecyclableCalculator.Core.Dto.RecyclableTypeDtos
 		[Required]
 		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		[Range(0, int.MaxValue)]
-		public double Rate { get; set; }
+		public decimal Rate { get; set; }
 
 		[Required]
 		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		[Range(0, int.MaxValue)]
-		public double MinKg { get; set; }
+		public decimal MinKg { get; set; }
 
 		[Required]
 		[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
 		[Range(0, int.MaxValue)]
-		public double MaxKg { get; set; }
+		public decimal MaxKg { get; set; }
 	}
 }

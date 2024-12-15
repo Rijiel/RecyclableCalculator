@@ -18,9 +18,9 @@ namespace RecyclableCalculator.Core.Dto.RecyclableItemDtos
 		[DisplayName("Recyclable Type")]
 		public int RecyclableTypeId { get; set; }
 
-		public double Weight { get; set; }
+		public decimal Weight { get; set; }
 
 		[DisplayName("Computed Rate")]
-		public double ComputedRate { get; set; }
+		public decimal ComputedRate { get; set; }
 	}
 }

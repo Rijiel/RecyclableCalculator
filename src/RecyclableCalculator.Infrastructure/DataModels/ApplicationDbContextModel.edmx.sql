@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/14/2024 09:58:17
+-- Date Created: 12/16/2024 05:45:52
 -- Generated from EDMX file: C:\Users\Administrator\source\repos\RecyclableCalculator\src\RecyclableCalculator.Infrastructure\DataModels\ApplicationDbContextModel.edmx
 -- --------------------------------------------------
 
@@ -25,11 +25,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[RecyclableTypes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RecyclableTypes];
-GO
 IF OBJECT_ID(N'[dbo].[RecyclableItems]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RecyclableItems];
+GO
+IF OBJECT_ID(N'[dbo].[RecyclableTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RecyclableTypes];
 GO
 
 -- --------------------------------------------------
@@ -39,7 +39,7 @@ GO
 -- Creating table 'RecyclableTypes'
 CREATE TABLE [dbo].[RecyclableTypes] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Type] varchar(100)  NULL,
+    [Type] varchar(100)  NOT NULL,
     [Rate] decimal(18,2)  NOT NULL,
     [MinKg] decimal(18,2)  NOT NULL,
     [MaxKg] decimal(18,2)  NOT NULL
@@ -49,8 +49,10 @@ GO
 -- Creating table 'RecyclableItems'
 CREATE TABLE [dbo].[RecyclableItems] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ItemDescription] varchar(100)  NOT NULL,
-    [RecyclableTypeId] int  NOT NULL
+    [ItemDescription] varchar(100)  NULL,
+    [RecyclableTypeId] int  NOT NULL,
+    [Weight] decimal(18,2)  NOT NULL,
+    [ComputedRate] decimal(18,2)  NOT NULL
 );
 GO
 

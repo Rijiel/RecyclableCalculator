@@ -12,6 +12,11 @@ namespace RecyclableCalculator.Infrastructure.DatabaseContext
 {
 	public class ApplicationDbContext : DbContext
 	{
+		public ApplicationDbContext() : base("DefaultConnection")
+		{
+			Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+		}
+
 		public DbSet<RecyclableType> RecyclableTypes { get; set; }
 		public DbSet<RecyclableItem> RecyclableItems { get; set; }
 

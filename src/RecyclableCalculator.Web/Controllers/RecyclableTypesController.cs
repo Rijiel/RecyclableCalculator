@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RecyclableCalculator.Core.AutoMapperProfiles;
+using RecyclableCalculator.Core.Domain.Models.ViewModels;
 using RecyclableCalculator.Core.Dto.RecyclableTypeDtos;
 using RecyclableCalculator.Core.ServiceContracts;
 using System;
@@ -14,12 +15,14 @@ namespace RecyclableCalculator.Web.Controllers
 	public class RecyclableTypesController : Controller
 	{
 		private readonly IRecyclableTypeService _typeService;
+		private readonly IRecyclableItemService _itemService;
 		private readonly IMapper _mapper;
 
-		public RecyclableTypesController(IRecyclableTypeService typeService)
+		public RecyclableTypesController(IRecyclableTypeService typeService, IRecyclableItemService itemService)
 		{
 			_mapper = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>()).CreateMapper();
 			_typeService = typeService;
+			_itemService = itemService;
 		}
 
 		public async Task<ActionResult> Index()
@@ -90,13 +93,19 @@ namespace RecyclableCalculator.Web.Controllers
 		[HttpGet]
 		public async Task<ActionResult> Delete(int? id)
 		{
-			RecyclableTypeResponse recyclableType = await _typeService.GetByIdAsync(id);
-			if (recyclableType == null)
+			// Initialize RecyclableTypeDeleteVM and check if the type can be deleted
+			var recyclableTypeDeleteVM = new RecyclableTypeDeleteVM()
+			{
+				RecyclableTypeResponse = await _typeService.GetByIdAsync(id),
+				IsDeletable = await _itemService.GetAsync(ri => ri.RecyclableTypeId == id) == null
+			};
+
+			if (recyclableTypeDeleteVM.RecyclableTypeResponse == null)
 			{
 				return HttpNotFound("Recyclable type not found");
 			}
 
-			return View(recyclableType);
+			return View(recyclableTypeDeleteVM);
 		}
 
 		[HttpPost]

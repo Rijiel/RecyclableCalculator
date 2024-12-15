@@ -11,8 +11,8 @@ namespace RecyclableCalculator.Core.Dto.RecyclableTypeDtos
 	{
 		public int Id { get; set; }
 		public string Type { get; set; }
-		public double Rate { get; set; }
-		public double MinKg { get; set; }
-		public double MaxKg { get; set; }
+		public decimal Rate { get; set; }
+		public decimal MinKg { get; set; }
+		public decimal MaxKg { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-﻿@model RecyclableCalculator.Core.Dto.RecyclableTypeDtos.RecyclableTypeResponse
+﻿@model RecyclableCalculator.Core.Domain.Models.ViewModels.RecyclableTypeDeleteVM
 
 @{
   ViewBag.Title = "Delete";
@@ -13,35 +13,35 @@
         <h4 class="text-secondary text-center">Recyclable Type</h4>
         <dl class="dl-horizontal text-center mt-5">
           <dt>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.RecyclableTypeResponse.Type)
           </dt>
 
           <dd>
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.RecyclableTypeResponse.Type)
           </dd>
 
           <dt>
-            @Html.DisplayNameFor(model => model.Rate)
+            @Html.DisplayNameFor(model => model.RecyclableTypeResponse.Rate)
           </dt>
 
           <dd>
-            @Html.DisplayFor(model => model.Rate)
+            @Html.DisplayFor(model => model.RecyclableTypeResponse.Rate)
           </dd>
 
           <dt>
-            @Html.DisplayNameFor(model => model.MinKg)
+            @Html.DisplayNameFor(model => model.RecyclableTypeResponse.MinKg)
           </dt>
 
           <dd>
-            @Html.DisplayFor(model => model.MinKg)
+            @Html.DisplayFor(model => model.RecyclableTypeResponse.MinKg)
           </dd>
 
           <dt>
-            @Html.DisplayNameFor(model => model.MaxKg)
+            @Html.DisplayNameFor(model => model.RecyclableTypeResponse.MaxKg)
           </dt>
 
           <dd>
-            @Html.DisplayFor(model => model.MaxKg)
+            @Html.DisplayFor(model => model.RecyclableTypeResponse.MaxKg)
           </dd>
 
         </dl>
@@ -52,7 +52,7 @@
 
           <div class="form-group mt-5">
             <div class="col-md-offset-2 col-md-12 text-center">
-              <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-danger" disabled="@(!Model.IsDeletable)">Delete</button>
             </div>
           </div>
 

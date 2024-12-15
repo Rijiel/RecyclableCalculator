@@ -18,8 +18,8 @@ namespace RecyclableCalculator.Core.Domain.Models
 		[ForeignKey(nameof(RecyclableTypeId))]
 		public RecyclableType RecyclableType { get; set; }
 
-		public double Weight { get; set; }
+		public decimal Weight { get; set; }
 
-		public double ComputedRate { get; set; }
+		public decimal ComputedRate { get; set; }
 	}
 }
