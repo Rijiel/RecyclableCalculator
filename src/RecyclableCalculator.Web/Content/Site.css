@@ -39,3 +39,8 @@ textarea {
 .card-index-icon{
     font-size: 5vw !important;
 }
+
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}

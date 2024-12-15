@@ -328,7 +328,7 @@ namespace RecyclableCalculator.ServiceTests
 		{
 			// Arrange
 			int id = 1;
-			RecyclableType recyclableType = new RecyclableType()
+			var recyclableType = new RecyclableType()
 			{
 				Id = id,
 				Type = "Plastic",

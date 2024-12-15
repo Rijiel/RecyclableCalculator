@@ -2,6 +2,7 @@
 using RecyclableCalculator.Core.AutoMapperProfiles;
 using RecyclableCalculator.Core.Domain.Models.ViewModels;
 using RecyclableCalculator.Core.Dto.RecyclableItemDtos;
+using RecyclableCalculator.Core.Dto.RecyclableTypeDtos;
 using RecyclableCalculator.Core.ServiceContracts;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ namespace RecyclableCalculator.Web.Controllers
 		public async Task<ActionResult> Index()
 		{
 			List<RecyclableItemResponse> recyclableItems = await _itemService.GetAllAsync();
+			List<RecyclableTypeResponse> recyclableTypes = await _typeService.GetAllAsync();
+
+			ViewBag.CanCreateItem = recyclableTypes.Count > 0;
 
 			return View(recyclableItems);
 		}
