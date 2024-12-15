@@ -37,6 +37,7 @@ namespace RecyclableCalculator.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				// Check if the type already exists
 				if (await TypeExistsAsync(request.Type))
 				{
 					ModelState.AddModelError(nameof(request.Type), "Type already exists");
@@ -48,6 +49,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
+			// If we get here, something went wrong, re-render the form
 			return View(request);
 		}
 
@@ -68,6 +70,7 @@ namespace RecyclableCalculator.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				// Check if the type already exists if current type is changed
 				RecyclableTypeResponse recyclableType = await _typeService.GetByIdAsync(request.Id);
 				if (recyclableType.Type != request.Type && await TypeExistsAsync(request.Type))
 				{
@@ -80,6 +83,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
+			// If we get here, something went wrong, re-render the form
 			return View(request);
 		}
 

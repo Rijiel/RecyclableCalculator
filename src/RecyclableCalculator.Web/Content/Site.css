@@ -19,9 +19,13 @@ textarea {
     max-width: 280px;
 }
 
-.card-index{
+.card-index {
     height: 60vh;
 }
+
+    .card-index:hover {
+        background-color: #0d6efd69;
+    }
 
 .card-index-text {
     width: 100%;

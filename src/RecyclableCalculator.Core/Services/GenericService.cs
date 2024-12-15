@@ -74,12 +74,14 @@ namespace RecyclableCalculator.Core.Services
 				throw new ArgumentNullException(nameof(updateDto));
 			}
 
+			// Use reflection to get the property "Id" from the generic type
 			var id = typeof(TUpdateDto).GetProperty("Id").GetValue(updateDto);
 			if (id == null)
 			{
 				throw new KeyNotFoundException($"{nameof(TModel)} does not contain {nameof(id)}");
 			}
 
+			// Update the model by mapping the updateDto to the data from db
 			TModel model = await _repository.GetByIdAsync((int)id, false);
 			_mapper.Map(updateDto, model);
 

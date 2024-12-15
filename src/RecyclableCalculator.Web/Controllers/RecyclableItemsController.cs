@@ -35,6 +35,7 @@ namespace RecyclableCalculator.Web.Controllers
 		[HttpGet]
 		public async Task<ActionResult> Create()
 		{
+			// Initialize RecyclableItemAddVM
 			var recyclableItemAddVM = new RecyclableItemAddVM()
 			{
 				RecyclableItemAddRequest = new RecyclableItemAddRequest(),
@@ -54,6 +55,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
+			// If we get here, something went wrong, re-render the form
 			requestVM.RecyclableTypes = await _typeService.GetAllAsync();
 
 			return View(requestVM);
@@ -68,6 +70,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return HttpNotFound("Recyclable item not found");
 			}
 
+			// Initialize RecyclableItemUpdateVM
 			var recyclableItemUpdateVM = new RecyclableItemUpdateVM()
 			{
 				RecyclableItemUpdateRequest = _mapper.Map<RecyclableItemUpdateRequest>(recyclableItem),
@@ -87,6 +90,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
+			// If we get here, something went wrong, re-render the form
 			requestVM.RecyclableTypes = await _typeService.GetAllAsync();
 
 			return View(requestVM);

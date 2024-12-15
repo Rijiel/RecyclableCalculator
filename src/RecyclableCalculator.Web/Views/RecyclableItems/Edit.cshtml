@@ -19,7 +19,7 @@
           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
           @Html.HiddenFor(model => model.RecyclableItemUpdateRequest.Id)
         <div class="row m-5 gap-3">
-
+          <!-- RecyclableTypeId -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemUpdateRequest.RecyclableTypeId, htmlAttributes: new { @class = "control-label" })
@@ -35,7 +35,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.RecyclableTypeId, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- ItemDescription -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemUpdateRequest.ItemDescription, htmlAttributes: new { @class = "control-label" })
@@ -45,7 +45,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.ItemDescription, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- Weight -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemUpdateRequest.Weight, htmlAttributes: new { @class = "control-label" })
@@ -55,7 +55,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.Weight, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- ComputedRate -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemUpdateRequest.ComputedRate, htmlAttributes: new { @class = "control-label" })

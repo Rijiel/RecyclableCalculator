@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<RecyclableCalculator.Core.Dto.RecyclableTypeDtos.RecyclableTypeResponse>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Types";
 }
 
-<h2>Index</h2>
+<h2>Recyclable Types</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a class="btn btn-sm btn-primary" href="@Url.Action("Create")">Create New</a>
+
 <table class="table">
     <tr>
         <th>

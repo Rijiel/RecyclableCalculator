@@ -9,7 +9,6 @@
     <div class="col-md-6">
       <h2 class="text-center mb-4">Create</h2>
 
-
       @using (Html.BeginForm())
       {
         @Html.AntiForgeryToken()
@@ -18,7 +17,7 @@
           <h4 class="text-secondary text-center">Recyclable Item</h4>
           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="row m-5 gap-3">
-
+          <!-- RecyclableTypeId -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemAddRequest.RecyclableTypeId, htmlAttributes: new { @class = "control-label" })
@@ -34,7 +33,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.RecyclableTypeId, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- ItemDescription -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemAddRequest.ItemDescription, htmlAttributes: new { @class = "control-label" })
@@ -44,7 +43,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.ItemDescription, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- Weight -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemAddRequest.Weight, htmlAttributes: new { @class = "control-label" })
@@ -54,7 +53,7 @@
               @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.Weight, "", new { @class = "text-danger" })
             </div>
           </div>
-
+          <!-- ComputedRate -->
           <div class="form-group row">
             <div class="col-md-4">
               @Html.LabelFor(model => model.RecyclableItemAddRequest.ComputedRate, htmlAttributes: new { @class = "control-label" })
