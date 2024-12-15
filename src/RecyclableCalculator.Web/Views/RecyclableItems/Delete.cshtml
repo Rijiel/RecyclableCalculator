@@ -1,0 +1,66 @@
+﻿@model RecyclableCalculator.Core.Dto.RecyclableItemDtos.RecyclableItemResponse
+
+@{
+  ViewBag.Title = "Delete";
+}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Delete</h2>
+
+      <div>
+        <h4 class="text-secondary text-center">Recyclable Item</h4>
+        <dl class="dl-horizontal text-center mt-5">
+          <dt>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.ItemDescription)
+          </dd>
+
+          <dt>
+            @Html.DisplayNameFor(model => model.RecyclableTypeId)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.RecyclableTypeId)
+          </dd>
+
+          <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.Weight)
+          </dd>
+
+          <dt>
+            @Html.DisplayNameFor(model => model.ComputedRate)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.ComputedRate)
+          </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+          @Html.AntiForgeryToken()
+
+          <div class="form-group mt-5">
+            <div class="col-md-offset-2 col-md-12 text-center">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+
+          <div>
+            @Html.ActionLink("Back to List", "Index")
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

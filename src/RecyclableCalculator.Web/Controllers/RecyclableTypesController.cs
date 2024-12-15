@@ -48,7 +48,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
-			return View();
+			return View(request);
 		}
 
 		[HttpGet]
@@ -80,7 +80,7 @@ namespace RecyclableCalculator.Web.Controllers
 				return RedirectToAction("Index");
 			}
 
-			return View();
+			return View(request);
 		}
 
 		[HttpGet]

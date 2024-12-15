@@ -72,6 +72,7 @@
     <Compile Include="Domain\Models\RecyclableItem.cs" />
     <Compile Include="Domain\Models\RecyclableType.cs" />
     <Compile Include="Domain\Models\ViewModels\RecyclableItemAddVM.cs" />
+    <Compile Include="Domain\Models\ViewModels\RecyclableItemUpdateVM.cs" />
     <Compile Include="Domain\RepositoryContracts\IGenericRepository.cs" />
     <Compile Include="Domain\RepositoryContracts\IRecyclableItemRepository.cs" />
     <Compile Include="Domain\RepositoryContracts\IRecyclableTypeRepository.cs" />

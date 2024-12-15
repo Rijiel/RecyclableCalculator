@@ -1,0 +1,88 @@
+﻿@model RecyclableCalculator.Core.Domain.Models.ViewModels.RecyclableItemUpdateVM
+
+@{
+  ViewBag.Title = "Edit";
+}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Edit</h2>
+
+
+      @using (Html.BeginForm())
+      {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+          <h4 class="text-secondary text-center">Recyclable Item</h4>
+          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+          @Html.HiddenFor(model => model.RecyclableItemUpdateRequest.Id)
+        <div class="row m-5 gap-3">
+
+          <div class="form-group row">
+            <div class="col-md-4">
+              @Html.LabelFor(model => model.RecyclableItemUpdateRequest.RecyclableTypeId, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+              <select id="RecyclableTypeId" name="RecyclableItemUpdateRequest.RecyclableTypeId" class="form-select">
+                @foreach (var type in Model.RecyclableTypes)
+                {
+                  var selected = Model.RecyclableItemUpdateRequest.RecyclableTypeId == type.Id ? "selected" : "";
+                  <option value="@type.Id" data-rate="@type.Rate" data-minkg="@type.MinKg" data-maxkg="@type.MaxKg" @selected>@type.Type</option>
+                }
+              </select>
+              @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.RecyclableTypeId, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-4">
+              @Html.LabelFor(model => model.RecyclableItemUpdateRequest.ItemDescription, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+              @Html.TextAreaFor(model => model.RecyclableItemUpdateRequest.ItemDescription, new { @class = "form-control" })
+              @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.ItemDescription, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-4">
+              @Html.LabelFor(model => model.RecyclableItemUpdateRequest.Weight, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.RecyclableItemUpdateRequest.Weight, new { htmlAttributes = new { @class = "form-control weight-input", type = "number", step = "0.01", min = "0" } })
+              @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.Weight, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-4">
+              @Html.LabelFor(model => model.RecyclableItemUpdateRequest.ComputedRate, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.RecyclableItemUpdateRequest.ComputedRate, new { htmlAttributes = new { @class = "form-control computed-rate", @readonly = "readonly" } })
+              @Html.ValidationMessageFor(model => model.RecyclableItemUpdateRequest.ComputedRate, "", new { @class = "text-danger computed-rate-val" })
+            </div>
+          </div>
+        </div>
+          <div class="form-group mt-3">
+            <div class="col-md-offset-2 col-md-12 text-center">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+          </div>
+        </div>
+      }
+
+      <div>
+        @Html.ActionLink("Back to List", "Index")
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  <script src="~/Scripts/Site.js"></script>
+}

@@ -1,11 +1,13 @@
-﻿const weightInputEl = document.getElementById('RecyclableItemAddRequest_Weight');
+﻿const weightInputEl = document.querySelector('.weight-input');
 const typeSelectEl = document.getElementById('RecyclableTypeId');
-const computedRateEl = document.getElementById('RecyclableItemAddRequest_ComputedRate');
-const weightInputValidationEl = document.getElementById('weight-validation');
+const computedRateEl = document.querySelector('.computed-rate');
+const computedRateValidationEl = document.querySelector('.computed-rate-val');
 const saveButtonEl = document.querySelector('[type="submit"]');
 const resetButtonEl = document.querySelector('[type="reset"]');
 
 $(function () {    
+    computeRate();
+
     weightInputEl.addEventListener('input', () => computeRate());
     typeSelectEl.addEventListener('change', () => computeRate());
     resetButtonEl.addEventListener('click', () => resetSaveButton());
@@ -19,10 +21,11 @@ function computeRate() {
     const selectedTypeMinKg = selectedType.dataset.minkg;
     const selectedTypeMaxKg = selectedType.dataset.maxkg;
 
-    computedRateEl.value = (selectedTypeRate * weight).toFixed(2);
+    const computedRate = selectedTypeRate * weight;
+    computedRateEl.value = (computedRate).toFixed(2);
 
-    if (computedRateEl.value < selectedTypeMinKg || computedRateEl.value > selectedTypeMaxKg) {
-        weightInputValidationEl.textContent = `Weight must be between ${selectedTypeMinKg} and ${selectedTypeMaxKg} kg.`;
+    if (computedRate < selectedTypeMinKg || computedRate > selectedTypeMaxKg) {
+        computedRateValidationEl.textContent = `Computed rate must be between ${selectedTypeMinKg} and ${selectedTypeMaxKg} kg.`;
         saveButtonEl.disabled = true;
     } else {
         resetSaveButton();
@@ -30,6 +33,6 @@ function computeRate() {
 }
 
 function resetSaveButton() {
-    weightInputValidationEl.textContent = '';
+    computedRateValidationEl.textContent = '';
     saveButtonEl.disabled = false;
 }

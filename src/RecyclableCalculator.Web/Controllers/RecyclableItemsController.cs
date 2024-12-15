@@ -35,8 +35,6 @@ namespace RecyclableCalculator.Web.Controllers
 		[HttpGet]
 		public async Task<ActionResult> Create()
 		{
-			var recyclableTypes = await _typeService.GetAllAsync();
-
 			var recyclableItemAddVM = new RecyclableItemAddVM()
 			{
 				RecyclableItemAddRequest = new RecyclableItemAddRequest(),
@@ -44,6 +42,81 @@ namespace RecyclableCalculator.Web.Controllers
 			};
 
 			return View(recyclableItemAddVM);
+		}
+
+		[HttpPost]
+		public async Task<ActionResult> Create(RecyclableItemAddVM requestVM)
+		{
+			if (ModelState.IsValid)
+			{
+				await _itemService.AddAsync(requestVM.RecyclableItemAddRequest);
+
+				return RedirectToAction("Index");
+			}
+
+			requestVM.RecyclableTypes = await _typeService.GetAllAsync();
+
+			return View(requestVM);
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> Edit(int? id)
+		{
+			RecyclableItemResponse recyclableItem = await _itemService.GetByIdAsync(id);
+			if (recyclableItem == null)
+			{
+				return HttpNotFound("Recyclable item not found");
+			}
+
+			var recyclableItemUpdateVM = new RecyclableItemUpdateVM()
+			{
+				RecyclableItemUpdateRequest = _mapper.Map<RecyclableItemUpdateRequest>(recyclableItem),
+				RecyclableTypes = await _typeService.GetAllAsync()
+			};
+
+			return View(recyclableItemUpdateVM);
+		}
+
+		[HttpPost]
+		public async Task<ActionResult> Edit(RecyclableItemUpdateVM requestVM)
+		{
+			if (ModelState.IsValid)
+			{
+				await _itemService.UpdateAsync(requestVM.RecyclableItemUpdateRequest);
+
+				return RedirectToAction("Index");
+			}
+
+			requestVM.RecyclableTypes = await _typeService.GetAllAsync();
+
+			return View(requestVM);
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> Delete(int? id)
+		{
+			RecyclableItemResponse recyclableItem = await _itemService.GetByIdAsync(id);
+			if (recyclableItem == null)
+			{
+				return HttpNotFound("Recyclable item not found");
+			}
+
+			return View(recyclableItem);
+		}
+
+		[HttpPost]
+		public async Task<ActionResult> Delete(int id)
+		{
+			try
+			{
+				await _itemService.RemoveAsync(id);
+
+				return RedirectToAction("Index");
+			}
+			catch (Exception)
+			{
+				return View("Error");
+			}
 		}
 	}
 }
