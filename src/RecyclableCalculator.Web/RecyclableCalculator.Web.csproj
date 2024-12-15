@@ -201,6 +201,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\RecyclableTypes\Index.cshtml" />
     <Content Include="Views\RecyclableTypes\Create.cshtml" />
+    <Content Include="Views\RecyclableTypes\Edit.cshtml" />
+    <Content Include="Views\RecyclableTypes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

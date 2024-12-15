@@ -88,15 +88,24 @@ namespace RecyclableCalculator.Infrastructure.Repositories
 			}
 
 			// Use reflection to get the Id property of the generic model
-			var key = typeof(TEntity).GetProperty("Id");
+			var param = Expression.Parameter(typeof(TEntity));
+			var body = Expression.Equal(Expression.Property(param, "Id"), Expression.Constant(id));
+			var expression = Expression.Lambda<Func<TEntity, bool>>(body, param);
 
-			return await query.FirstOrDefaultAsync(x => key.GetValue(x).Equals(id));
+			return await query.FirstOrDefaultAsync(expression);
 		}
 
 		public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 
 		public void Add(TEntity entity) => _dbSet.Add(entity);
 
-		public void Remove(TEntity entity) => _dbSet.Remove(entity);
+		//public void Remove(TEntity entity) => _dbSet.Remove(entity);
+
+		public void Remove(TEntity entity)
+		{
+			// Attach the entity to the context and then remove it to resolve ObjectStateManager errors
+			_dbSet.Attach(entity);
+			_dbSet.Remove(entity);
+		}
 	}
 }
