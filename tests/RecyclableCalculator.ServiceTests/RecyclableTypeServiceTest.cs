@@ -53,17 +53,17 @@ namespace RecyclableCalculator.ServiceTests
 				new() {
 					Id = 1,
 					Type = "Plastic",
-					Rate = 0.5,
-					MinKg = 0.5,
-					MaxKg = 1.0
+					Rate = (decimal)(decimal)0.5,
+					MinKg = (decimal)(decimal)0.5,
+					MaxKg = (decimal)1.0
 				},
 				new()
 				{
 					Id = 2,
 					Type = "Glass",
-					Rate = 0.5,
-					MinKg = 0.5,
-					MaxKg = 1.0
+					Rate = (decimal)0.5,
+					MinKg = (decimal)0.5,
+					MaxKg = (decimal) 1.0
 				}
 			};
 
@@ -88,17 +88,17 @@ namespace RecyclableCalculator.ServiceTests
 				new() {
 					Id = 1,
 					Type = "Plastic",
-					Rate = 0.5,
-					MinKg = 0.5,
-					MaxKg = 1.0
+					Rate = (decimal)0.5,
+					MinKg = (decimal)0.5,
+					MaxKg = (decimal) 1.0
 				},
 				new()
 				{
 					Id = 2,
 					Type = "Glass",
-					Rate = 0.5,
-					MinKg = 0.5,
-					MaxKg = 1.0
+					Rate = (decimal)0.5,
+					MinKg = (decimal)0.5,
+					MaxKg = (decimal) 1.0
 				}
 			};
 
@@ -143,9 +143,9 @@ namespace RecyclableCalculator.ServiceTests
 			{
 				Id = 1,
 				Type = "Plastic",
-				Rate = 0.5,
-				MinKg = 0.5,
-				MaxKg = 1.0
+				Rate = (decimal)0.5,
+				MinKg = (decimal)0.5,
+				MaxKg = (decimal)1.0
 			};
 
 			Expression<Func<RecyclableType, bool>> filter = x => x.Type == "Plastic";
@@ -206,9 +206,9 @@ namespace RecyclableCalculator.ServiceTests
 			{
 				Id = 1,
 				Type = "Plastic",
-				Rate = 0.5,
-				MinKg = 0.5,
-				MaxKg = 1.0
+				Rate = (decimal)0.5,
+				MinKg = (decimal)0.5,
+				MaxKg = (decimal)1.0
 			};
 
 			int id = 1;
@@ -248,9 +248,9 @@ namespace RecyclableCalculator.ServiceTests
 			var request = new RecyclableTypeAddRequest()
 			{
 				Type = "Plastic",
-				Rate = 0.5,
-				MinKg = 0.5,
-				MaxKg = 1.0
+				Rate = (decimal)0.5,
+				MinKg = (decimal)0.5,
+				MaxKg = (decimal)1.0
 			};
 
 			var recyclableType = _mapper.Map<RecyclableType>(request);
@@ -288,9 +288,9 @@ namespace RecyclableCalculator.ServiceTests
 			{
 				Id = 1,
 				Type = "Plastic",
-				Rate = 0.5,
-				MinKg = 0.5,
-				MaxKg = 1.0
+				Rate = (decimal)0.5,
+				MinKg = (decimal)0.5,
+				MaxKg = (decimal)1.0
 			};
 
 			var recyclableType = _mapper.Map<RecyclableType>(request);
@@ -332,9 +332,9 @@ namespace RecyclableCalculator.ServiceTests
 			{
 				Id = id,
 				Type = "Plastic",
-				Rate = 0.5,
-				MinKg = 0.5,
-				MaxKg = 1.0
+				Rate = (decimal)0.5,
+				MinKg = (decimal)0.5,
+				MaxKg = (decimal)1.0
 			};
 
 			_recyclableTypeRepositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<int>(), It.IsAny<bool>()))
