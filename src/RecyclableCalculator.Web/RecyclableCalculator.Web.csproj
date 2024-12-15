@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RecyclableItemsController.cs" />
     <Compile Include="Controllers\RecyclableTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,6 +205,8 @@
     <Content Include="Views\RecyclableTypes\Create.cshtml" />
     <Content Include="Views\RecyclableTypes\Edit.cshtml" />
     <Content Include="Views\RecyclableTypes\Delete.cshtml" />
+    <Content Include="Views\RecyclableItems\Index.cshtml" />
+    <Content Include="Views\RecyclableItems\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,89 @@
+﻿@model RecyclableCalculator.Core.Domain.Models.ViewModels.RecyclableItemAddVM
+
+@{
+  ViewBag.Title = "Create";
+}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Create</h2>
+
+
+      @using (Html.BeginForm())
+      {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+          <h4 class="text-secondary text-center">Recyclable Item</h4>
+          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+          <div class="row m-5 gap-3">
+
+            <div class="form-group row">
+              <div class="col-md-4">
+                @Html.LabelFor(model => model.RecyclableItemAddRequest.ItemDescription, htmlAttributes: new { @class = "control-label" })
+              </div>
+              <div class="col-md-8">
+                @Html.TextAreaFor(model => model.RecyclableItemAddRequest.ItemDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.ItemDescription, "", new { @class = "text-danger" })
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-4">
+                @Html.LabelFor(model => model.RecyclableItemAddRequest.RecyclableTypeId, htmlAttributes: new { @class = "control-label" })
+              </div>
+              <div class="col-md-8">
+                <select id="RecyclableTypeId" name="RecyclableItem.AddRequest.RecyclableTypeId" class="form-select">
+                  @foreach (var type in Model.RecyclableTypes)
+                  {
+                    var selected = Model.RecyclableItemAddRequest.RecyclableTypeId == type.Id ? "selected" : "";
+                    <option value="@type.Id" data-rate="@type.Rate" data-minkg="@type.MinKg" data-maxkg="@type.MaxKg" @selected>@type.Type</option>
+                  }
+                </select>
+                @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.RecyclableTypeId, "", new { @class = "text-danger" })
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-4">
+                @Html.LabelFor(model => model.RecyclableItemAddRequest.Weight, htmlAttributes: new { @class = "control-label" })
+              </div>
+              <div class="col-md-8">
+                @Html.EditorFor(model => model.RecyclableItemAddRequest.Weight, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01", min = "0" } })
+                @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.Weight, "", new { @class = "text-danger" })
+                <div class="text-danger" id="weight-validation"></div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-4">
+                @Html.LabelFor(model => model.RecyclableItemAddRequest.ComputedRate, htmlAttributes: new { @class = "control-label" })
+              </div>
+              <div class="col-md-8">
+                @Html.EditorFor(model => model.RecyclableItemAddRequest.ComputedRate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.RecyclableItemAddRequest.ComputedRate, "", new { @class = "text-danger" })
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-md-offset-2 col-md-12 text-center">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+          </div>
+        </div>
+      }
+
+      <div>
+        @Html.ActionLink("Back to List", "Index")
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  <script src="~/Scripts/Site.js"></script>
+}
